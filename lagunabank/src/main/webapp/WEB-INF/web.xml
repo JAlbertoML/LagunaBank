@@ -56,6 +56,13 @@
   	<servlet-name>SavedAccounts</servlet-name>
   	<servlet-class>servlets.SavedAccounts</servlet-class>
   </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>RemoveAccount</display-name>
+  	<servlet-name>RemoveAccount</servlet-name>
+  	<servlet-class>servlets.RemoveAccount</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>Login</servlet-name>
   	<url-pattern>/Login</url-pattern>
@@ -87,5 +94,9 @@
   <servlet-mapping>
   	<servlet-name>SavedAccounts</servlet-name>
   	<url-pattern>/SavedAccounts</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>RemoveAccount</servlet-name>
+  	<url-pattern>/RemoveAccount</url-pattern>
   </servlet-mapping>
 </web-app>

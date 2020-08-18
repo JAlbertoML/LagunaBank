@@ -18,7 +18,7 @@ public class SavedAccountsBs {
 					}
 					if(!exists) {
 						savedAccounts.add(new Account(Integer.parseInt(idAccount), name));
-						ClientBs.addSavedAccount(idClient, savedAccounts);
+						ClientBs.editSavedAccount(idClient, savedAccounts);
 					} else {
 						message = "El cliente que estás intentando registrar ya está en tu lista de cuentas guardadas.";
 					}

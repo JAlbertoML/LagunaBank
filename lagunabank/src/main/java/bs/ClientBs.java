@@ -74,7 +74,7 @@ public class ClientBs {
 		return ClientDao.editClient(client, idClient);
 	}
 	
-	public static Boolean addSavedAccount(Integer idClient, List<Account> savedAccounts) {
+	public static Boolean editSavedAccount(Integer idClient, List<Account> savedAccounts) {
 		return ClientDao.editSavedAccounts(idClient, savedAccounts);
 	}
 }
