@@ -63,6 +63,27 @@
   	<servlet-name>RemoveAccount</servlet-name>
   	<servlet-class>servlets.RemoveAccount</servlet-class>
   </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>MakeWithdrawal</display-name>
+  	<servlet-name>MakeWithdrawal</servlet-name>
+  	<servlet-class>servlets.MakeWithdrawal</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>MakeTopUpBalance</display-name>
+  	<servlet-name>MakeTopUpBalance</servlet-name>
+  	<servlet-class>servlets.MakeTopUpBalance</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>MakeTransfer</display-name>
+  	<servlet-name>MakeTransfer</servlet-name>
+  	<servlet-class>servlets.MakeTransfer</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>Login</servlet-name>
   	<url-pattern>/Login</url-pattern>
@@ -98,5 +119,17 @@
   <servlet-mapping>
   	<servlet-name>RemoveAccount</servlet-name>
   	<url-pattern>/RemoveAccount</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>MakeWithdrawal</servlet-name>
+  	<url-pattern>/MakeWithdrawal</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>MakeTopUpBalance</servlet-name>
+  	<url-pattern>/MakeTopUpBalance</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>MakeTransfer</servlet-name>
+  	<url-pattern>/MakeTransfer</url-pattern>
   </servlet-mapping>
 </web-app>

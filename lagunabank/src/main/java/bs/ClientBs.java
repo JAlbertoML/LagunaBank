@@ -77,4 +77,12 @@ public class ClientBs {
 	public static Boolean editSavedAccount(Integer idClient, List<Account> savedAccounts) {
 		return ClientDao.editSavedAccounts(idClient, savedAccounts);
 	}
+	
+	public static Boolean editMovements(Integer idClient, List<Movement> movements) {
+		return ClientDao.editMovements(idClient, movements);
+	}
+	
+	public static Boolean editBalance(Integer idClient, BigDecimal balance) {
+		return ClientDao.editBalance(idClient, balance);
+	}
 }

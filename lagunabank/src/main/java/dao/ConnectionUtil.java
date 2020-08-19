@@ -16,9 +16,9 @@ public class ConnectionUtil {
 			comboPooledDataSource.setUser("postgres");
 			comboPooledDataSource.setPassword("postgres");
 			
-			comboPooledDataSource.setAcquireIncrement(5);
+			comboPooledDataSource.setAcquireIncrement(100);
 			comboPooledDataSource.setInitialPoolSize(5);
-			comboPooledDataSource.setMaxPoolSize(20);
+			comboPooledDataSource.setMaxPoolSize(200);
 			comboPooledDataSource.setMaxIdleTime(0);
 			comboPooledDataSource.setMinPoolSize(5);
 		} catch (PropertyVetoException e) {

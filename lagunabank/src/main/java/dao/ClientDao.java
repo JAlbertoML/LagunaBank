@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import com.google.gson.Gson;
@@ -51,6 +52,9 @@ public class ClientDao {
 				String gender = result.getString("gender");
 				BigDecimal balance = result.getBigDecimal("balance");
 				List<Movement> movements = gson.fromJson(result.getString("movements"), movementListType);
+				if(movements == null) {
+					movements = new ArrayList<Movement>();
+				}
 				List<BigDecimal> historicalBalances = gson.fromJson(result.getString("historicalBalances"),
 						balancesListType);
 				List<Account> savedAccounts = gson.fromJson(result.getString("savedAccounts"), savedAccountsListType);
@@ -108,6 +112,9 @@ public class ClientDao {
 				String gender = result.getString("gender");
 				BigDecimal balance = result.getBigDecimal("balance");
 				List<Movement> movements = gson.fromJson(result.getString("movements"), movementListType);
+				if(movements == null) {
+					movements = new ArrayList<Movement>();
+				}
 				List<BigDecimal> historicalBalances = gson.fromJson(result.getString("historicalBalances"),
 						balancesListType);
 				List<Account> savedAccounts = gson.fromJson(result.getString("savedAccounts"), savedAccountsListType);
@@ -165,6 +172,9 @@ public class ClientDao {
 				String gender = result.getString("gender");
 				BigDecimal balance = result.getBigDecimal("balance");
 				List<Movement> movements = gson.fromJson(result.getString("movements"), movementListType);
+				if(movements == null) {
+					movements = new ArrayList<Movement>();
+				}
 				List<BigDecimal> historicalBalances = gson.fromJson(result.getString("historicalBalances"),
 						balancesListType);
 				List<Account> savedAccounts = gson.fromJson(result.getString("savedAccounts"), savedAccountsListType);
@@ -222,6 +232,9 @@ public class ClientDao {
 				String gender = result.getString("gender");
 				BigDecimal balance = result.getBigDecimal("balance");
 				List<Movement> movements = gson.fromJson(result.getString("movements"), movementListType);
+				if(movements == null) {
+					movements = new ArrayList<Movement>();
+				}
 				List<BigDecimal> historicalBalances = gson.fromJson(result.getString("historicalBalances"),
 						balancesListType);
 				List<Account> savedAccounts = gson.fromJson(result.getString("savedAccounts"), savedAccountsListType);
@@ -324,6 +337,45 @@ public class ClientDao {
 					"update client set savedaccounts = ? where idclient = ?");
 			Gson gson = new Gson();
 			preparedStatement.setString(1, gson.toJson(savedAccounts));
+			preparedStatement.setInt(2, idClient);
+			Integer result = preparedStatement.executeUpdate();
+			if(result > 0) {
+				correct = true;
+			}
+		} catch (SQLException e) {
+			System.out.println("Error al modificar registro");
+			e.printStackTrace();
+		}
+		return correct;
+	}
+	
+	public static Boolean editMovements(Integer idClient, List<Movement> movements) {
+		Boolean correct = false;
+		try {
+			Connection connection = ConnectionUtil.getConnection();
+			PreparedStatement preparedStatement = connection.prepareStatement(
+					"update client set movements = ? where idclient = ?");
+			Gson gson = new Gson();
+			preparedStatement.setString(1, gson.toJson(movements));
+			preparedStatement.setInt(2, idClient);
+			Integer result = preparedStatement.executeUpdate();
+			if(result > 0) {
+				correct = true;
+			}
+		} catch (SQLException e) {
+			System.out.println("Error al modificar registro");
+			e.printStackTrace();
+		}
+		return correct;
+	}
+	
+	public static Boolean editBalance(Integer idClient, BigDecimal balance) {
+		Boolean correct = false;
+		try {
+			Connection connection = ConnectionUtil.getConnection();
+			PreparedStatement preparedStatement = connection.prepareStatement(
+					"update client set balance = ? where idclient = ?");
+			preparedStatement.setBigDecimal(1, balance);
 			preparedStatement.setInt(2, idClient);
 			Integer result = preparedStatement.executeUpdate();
 			if(result > 0) {

@@ -6,6 +6,8 @@
 <c:set var="client" value="${requestScope['client']}"></c:set>
 <c:set var="lastExit" value="${requestScope['lastExit']}"></c:set>
 <c:set var="lastEntry" value="${requestScope['lastEntry']}"></c:set>
+<c:set var="message" value="${requestScope['messageErrorMov']}"></c:set>
+<c:set var="alert" value="${requestScope['alert']}"></c:set>
 <head>
 
 <meta charset="utf-8">
@@ -29,7 +31,7 @@
 
 </head>
 
-<body id="page-top">
+<body id="page-top" onload="${alert}">
 
 	<!-- Page Wrapper -->
 	<div id="wrapper">
@@ -71,10 +73,12 @@
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">Movimientos</h6>
-						<a class="collapse-item" href="MakeWithdrawal">Retiro de
-							dinero</a> <a class="collapse-item" href="MakeTransfer">Transferencia</a>
-						<a class="collapse-item" href="MakeTopUpBalance">Recarga de
-							saldo</a>
+						<a class="collapse-item" data-toggle="modal"
+							data-target="#withdrawalModal" href="">Retiro de dinero</a> <a
+							class="collapse-item" data-toggle="modal"
+							data-target="#transferModal" href="">Transferencia</a> <a
+							class="collapse-item" data-toggle="modal"
+							data-target="#topUpModal" href="">Recarga de saldo</a>
 					</div>
 				</div></li>
 
@@ -165,7 +169,7 @@
 
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
-
+					<p style="color: red;">${message}</p>
 					<!-- Content Row -->
 					<div class="row">
 
@@ -176,8 +180,9 @@
 									<div class="row no-gutters align-items-center">
 										<div class="col mr-2">
 											<div
-												class="text-xs font-weight-bold text-success text-uppercase mb-1">Saldo
-												total actual<br><br></div>
+												class="text-xs font-weight-bold text-success text-uppercase mb-1">
+												Saldo total actual<br> <br>
+											</div>
 											<div class="h5 mb-0 font-weight-bold text-gray-800">$${client.balance}</div>
 										</div>
 										<div class="col-auto">
@@ -195,9 +200,10 @@
 									<div class="row no-gutters align-items-center">
 										<div class="col mr-2">
 											<div
-												class="text-xs font-weight-bold text-primary text-uppercase mb-1">Último
-												gasto<br>(${lastExit.movDate})</div>
-											<div class="h5 mb-0 font-weight-bold text-gray-800">$${lastEntry.amount}</div>
+												class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+												Último gasto<br>(${lastExit.movDate})
+											</div>
+											<div class="h5 mb-0 font-weight-bold text-gray-800">$${lastExit.amount}</div>
 										</div>
 										<div class="col-auto">
 											<i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -214,8 +220,9 @@
 									<div class="row no-gutters align-items-center">
 										<div class="col mr-2">
 											<div
-												class="text-xs font-weight-bold text-info text-uppercase mb-1">Último
-												ingreso<br>(${lastEntry.movDate})</div>
+												class="text-xs font-weight-bold text-info text-uppercase mb-1">
+												Último ingreso<br>(${lastEntry.movDate})
+											</div>
 											<div class="row no-gutters align-items-center">
 												<div class="col-auto">
 													<div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">$${lastEntry.amount}</div>
@@ -275,7 +282,8 @@
 								<!-- Card Header - Dropdown -->
 								<div
 									class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-									<h6 class="m-0 font-weight-bold text-primary">Situación financiera</h6>
+									<h6 class="m-0 font-weight-bold text-primary">Situación
+										financiera</h6>
 								</div>
 								<!-- Card Body -->
 								<div class="card-body">
@@ -338,6 +346,114 @@
 						data-dismiss="modal">Cancelar</button>
 					<a class="btn btn-primary" href="Logout">Cerrar sesión</a>
 				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Make Withdrawal Modal -->
+	<div class="modal fade" id="withdrawalModal" tabindex="-1"
+		role="dialog" aria-labelledby="withdrawalModal" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Retirar dinero</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<form class="user" action="MakeWithdrawal" method="post">
+					<div class="modal-body">
+						<div class="form-group">
+							<input type="text" class="form-control form-control-user"
+								id="amountTxt" name="amountTxt" placeholder="Monto del retiro">
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control form-control-user"
+								id="descTxt" name="descTxt"
+								placeholder="Descripción del movimiento (opcional)">
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">Cancelar</button>
+						<button type="submit" class="btn btn-primary">Realizar
+							retiro</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!-- Make Top Up Modal -->
+	<div class="modal fade" id="topUpModal" tabindex="-1" role="dialog"
+		aria-labelledby="topUpModal" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Recargar saldo</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<form class="user" action="MakeTopUpBalance" method="post">
+					<div class="modal-body">
+						<div class="form-group">
+							<input type="text" class="form-control form-control-user"
+								id="amountTxt" name="amountTxt"
+								placeholder="Monto de la recarga">
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">Cancelar</button>
+						<button type="submit" class="btn btn-primary">Recargar</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!-- Transfer Modal -->
+	<div class="modal fade" id="transferModal" tabindex="-1" role="dialog"
+		aria-labelledby="transferModal" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Realizar
+						transferencia</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<form class="user" action="MakeTransfer" method="post">
+					<div class="modal-body">
+					<div class="form-group">
+							<select id="idReceiverTxt" name="idReceiverTxt" class="form-control ">
+							<option value="" selected="selected" disabled="disabled">Destinatario</option>
+								<c:forEach items="${client.savedAccounts}" var="account">
+									<option value="${account.idAccout}">${account.alias} - ${account.idAccout}</option>
+								</c:forEach>
+							</select>
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control form-control-user"
+								id="amountTxt" name="amountTxt"
+								placeholder="Monto de la transferencia">
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control form-control-user"
+								id="descTxt" name="descTxt" placeholder="Descripción (opcional)">
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">Cancelar</button>
+						<button type="submit" class="btn btn-primary">Tranferir</button>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>

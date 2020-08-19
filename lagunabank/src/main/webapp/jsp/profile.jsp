@@ -80,9 +80,12 @@
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">Movimientos</h6>
-						<a class="collapse-item" href="MakeWithdrawal">Retiro de
-							dinero</a> <a class="collapse-item" href="MakeTransfer">Transferencia</a>
-						<a class="collapse-item" href="MakeTopUpBalance">Recarga de
+						<a class="collapse-item" data-toggle="modal"
+							data-target="#withdrawalModal" href="">Retiro de
+							dinero</a> <a class="collapse-item" data-toggle="modal"
+							data-target="#transferModal" href="">Transferencia</a>
+						<a class="collapse-item" data-toggle="modal"
+							data-target="#topUpModal" href="">Recarga de
 							saldo</a>
 					</div>
 				</div></li>
@@ -329,6 +332,41 @@
 						<button type="button" class="btn btn-secondary"
 							data-dismiss="modal">Cancelar</button>
 						<input type="submit" class="btn btn-primary" value="Guardar foto">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Make Withdrawal Modal -->
+	<div class="modal fade" id="withdrawalModal" tabindex="-1"
+		role="dialog" aria-labelledby="withdrawalModal" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Retirar dinero</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<form class="user" action="MakeWithdrawal" method="post">
+					<div class="modal-body">
+						<div class="form-group">
+							<input type="text" class="form-control form-control-user"
+								id="amountTxt" name="amountTxt" placeholder="Monto del retiro">
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control form-control-user"
+								id="descTxt" name="descTxt"
+								placeholder="Descripción del movimiento (opcional)">
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">Cancelar</button>
+						<button type="submit" class="btn btn-primary">Realizar
+							retiro</button>
 					</div>
 				</form>
 			</div>

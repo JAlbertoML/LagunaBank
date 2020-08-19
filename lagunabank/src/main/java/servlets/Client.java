@@ -27,19 +27,29 @@ public class Client extends HttpServlet {
 			request.setAttribute("client", client);
 			try {
 				for(Movement mov : client.getMovements()) {
-					if(mov.getType() == Movement.MOV_TRANSFER || mov.getType() == Movement.MOV_WITHDRAWAL) {
+					if(mov.getType().equals(Movement.MOV_TRANSFER) || mov.getType().equals(Movement.MOV_WITHDRAWAL)) {
 						request.setAttribute("lastExit", mov);
 						break;
 					}
 				}
 				for(Movement mov : client.getMovements()) {
-					if(mov.getType() == Movement.MOV_TOP_UP_BALANCE || mov.getType() == Movement.MOV_PAYMENT) {
+					if(mov.getType().equals(Movement.MOV_TOP_UP_BALANCE) || mov.getType().equals(Movement.MOV_PAYMENT)) {
 						request.setAttribute("lastEntry", mov);
 						break;
 					}
 				}
 			} catch (NullPointerException e) {
 				System.out.println("No hay nada");
+			}
+			if(httpSession.getAttribute("messageErrorMov") != null) {
+				request.setAttribute("messageErrorMov", httpSession.getAttribute("messageErrorMov"));
+				httpSession.removeAttribute("messageErrorMov");
+			}
+			if(httpSession.getAttribute("alert") != null) {
+				String alert = (String)httpSession.getAttribute("alert");
+				request.setAttribute("alert", alert);
+				System.out.println(alert);
+				httpSession.removeAttribute("alert");
 			}
 			requestDispatcher.forward(request, response);
 		} else {
