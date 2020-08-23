@@ -84,6 +84,41 @@
   	<servlet-name>MakeTransfer</servlet-name>
   	<servlet-class>servlets.MakeTransfer</servlet-class>
   </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>CheckWithdrawals</display-name>
+  	<servlet-name>CheckWithdrawals</servlet-name>
+  	<servlet-class>servlets.CheckWithdrawals</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>CheckTransfers</display-name>
+  	<servlet-name>CheckTransfers</servlet-name>
+  	<servlet-class>servlets.CheckTransfers</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>CheckPayments</display-name>
+  	<servlet-name>CheckPayments</servlet-name>
+  	<servlet-class>servlets.CheckPayments</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>CheckTopUpBalances</display-name>
+  	<servlet-name>CheckTopUpBalances</servlet-name>
+  	<servlet-class>servlets.CheckTopUpBalances</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>CheckMovements</display-name>
+  	<servlet-name>CheckMovements</servlet-name>
+  	<servlet-class>servlets.CheckMovements</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>Login</servlet-name>
   	<url-pattern>/Login</url-pattern>
@@ -131,5 +166,25 @@
   <servlet-mapping>
   	<servlet-name>MakeTransfer</servlet-name>
   	<url-pattern>/MakeTransfer</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>CheckWithdrawals</servlet-name>
+  	<url-pattern>/CheckWithdrawals</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>CheckTransfers</servlet-name>
+  	<url-pattern>/CheckTransfers</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>CheckPayments</servlet-name>
+  	<url-pattern>/CheckPayments</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>CheckTopUpBalances</servlet-name>
+  	<url-pattern>/CheckTopUpBalances</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>CheckMovements</servlet-name>
+  	<url-pattern>/CheckMovements</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -2,11 +2,11 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html>
-<head>
+<html lang="en">
 <c:set var="client" value="${requestScope['client']}"></c:set>
-<c:set var="message" value="${requestScope['message']}"></c:set>
-<c:set var="alias" value="${requestScope['alias']}"></c:set>
+<c:set var="typeMov" value="${requestScope['type']}"></c:set>
+<head>
+
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
@@ -14,17 +14,21 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Saved Accounts</title>
+<title>Recargas</title>
 
-<!-- Custom fonts for this template-->
+<!-- Custom fonts for this template -->
 <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
 	type="text/css">
 <link
 	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
 	rel="stylesheet">
 
-<!-- Custom styles for this template-->
+<!-- Custom styles for this template -->
 <link href="css/sb-admin-2.css" rel="stylesheet">
+
+<!-- Custom styles for this page -->
+<link href="vendor/datatables/dataTables.bootstrap4.min.css"
+	rel="stylesheet">
 
 </head>
 
@@ -71,29 +75,28 @@
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">Movimientos</h6>
 						<a class="collapse-item" data-toggle="modal"
-							data-target="#withdrawalModal" href="">Retiro de
-							dinero</a> <a class="collapse-item" data-toggle="modal"
-							data-target="#transferModal" href="">Transferencia</a>
-						<a class="collapse-item" data-toggle="modal"
-							data-target="#topUpModal" href="">Recarga de
-							saldo</a>
+							data-target="#withdrawalModal" href="">Retiro de dinero</a> <a
+							class="collapse-item" data-toggle="modal"
+							data-target="#transferModal" href="">Transferencia</a> <a
+							class="collapse-item" data-toggle="modal"
+							data-target="#topUpModal" href="">Recarga de saldo</a>
 					</div>
 				</div></li>
 
 			<!-- Nav Item - Utilities Collapse Menu -->
-			<li class="nav-item"><a class="nav-link collapsed" href="#"
+			<li class="nav-item active"><a class="nav-link" href="#"
 				data-toggle="collapse" data-target="#collapseUtilities"
 				aria-expanded="true" aria-controls="collapseUtilities"> <i
 					class="fas fa-fw fa-wrench"></i> <span>Consultar movimientos</span>
 			</a>
-				<div id="collapseUtilities" class="collapse"
+				<div id="collapseUtilities" class="collapse show"
 					aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">Movimientos:</h6>
-						<a class="collapse-item" href="CheckWithdrawals">Retiros</a> <a
-							class="collapse-item" href="CheckTransfers">Transferencias</a> <a
-							class="collapse-item" href="CheckPayments">Pagos a cuenta</a> <a
-							class="collapse-item" href="CheckTopUpBalances">Recargas</a> <a
+						<a class="collapse-item" href="CheckWithdrawals">Retiros</a>
+						<a class="collapse-item" href="CheckTransfers">Transferencias</a>
+						<a class="collapse-item" href="CheckPayments">Pagos a cuenta</a> <a
+							class="collapse-item active" href="CheckTopUpBalances">Recargas</a> <a
 							class="collapse-item" href="CheckMovements">Todos</a>
 					</div>
 				</div></li>
@@ -105,9 +108,8 @@
 			<div class="sidebar-heading">Cuentas</div>
 
 			<!-- Nav Item - Charts -->
-			<li class="nav-item active"><a class="nav-link"
-				href="SavedAccounts"> <i class="fas fa-fw fa-folder"></i> <span>Cuentas
-						guardadas</span>
+			<li class="nav-item"><a class="nav-link" href="SavedAccounts">
+					<i class="fas fa-fw fa-folder"></i> <span>Cuentas guardadas</span>
 			</a></li>
 
 			<!-- Divider -->
@@ -134,7 +136,7 @@
 						class="btn btn-link d-md-none rounded-circle mr-3">
 						<i class="fa fa-bars"></i>
 					</button>
-					<h1 class="h3 mb-0 text-gray-800">Cuentas guardadas</h1>
+					<h1 class="h3 mb-0 text-gray-800">Recargas</h1>
 					<!-- Topbar Navbar -->
 					<ul class="navbar-nav ml-auto">
 
@@ -168,55 +170,57 @@
 
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
-					<p class="mb-4 alert">Para poder realizar transferencias de
-						dinero para otros clientes debes tenerlos en tu lista de cuentas
-						guardadas.</p>
-					<p style="color: red;">${message}</p>
+
+
 
 					<!-- DataTales Example -->
 					<div class="card shadow mb-4">
 						<div class="card-header py-3">
-							<a style="color: white;"
-								class="btn btn-primary btn-user btn-block col-md-12"
-								data-toggle="modal" data-target="#addAccountModal">Agregar
-								cuenta</a>
+							<h6 class="m-0 font-weight-bold text-primary">Tabla de
+								recargas de dinero a tu cuenta</h6>
 						</div>
 						<div class="card-body">
 							<div class="table-responsive">
-								<table id="dataTable" width="100%" style="border: none;">
+								<table class="table table-bordered" id="dataTable" width="100%"
+									cellspacing="0">
 									<thead>
 										<tr>
-											<th style="width: 5%;"></th>
-											<th>N° Cliente</th>
-											<th>Nombre (Alias)</th>
+											<th width="15%">Cantidad</th>
+											<th width="25%">Fecha</th>
+											<th width="15%">Tipo</th>
+											<th>Descripción</th>
 										</tr>
 									</thead>
+									<tfoot>
+										<tr>
+											<th>Cantidad</th>
+											<th>Fecha</th>
+											<th>Tipo</th>
+											<th>Descripción</th>
+										</tr>
+									</tfoot>
 									<tbody>
-										<c:forEach items="${client.savedAccounts}" var="account">
-											<tr>
-												<form action="RemoveAccount" method="post">
-													<input type="hidden" value="${account.idAccout}"
-														name="idAccount">
-													<td style="text-align: center;">
-														<button type="submit"
-															class="btn btn-danger btn-circle btn-sm">
-															<i class="fas fa-trash"></i>
-														</button>
-													</td>
-												</form>
-												<td>${account.idAccout}</td>
-												<td>${account.alias}</td>
-											</tr>
+										<c:forEach items="${client.movements}" var="mov">
+											<c:if test="${mov.type == \"Recarga\"}">
+												<tr>
+													<td>$${mov.amount}</td>
+													<td>${mov.movDate}</td>
+													<td>${mov.type}</td>
+													<td>${mov.description}</td>
+												</tr>
+											</c:if>
 										</c:forEach>
 									</tbody>
 								</table>
 							</div>
 						</div>
 					</div>
+
 				</div>
 				<!-- /.container-fluid -->
 			</div>
 			<!-- End of Main Content -->
+
 			<!-- Footer -->
 			<footer class="sticky-footer bg-white">
 				<div class="container my-auto">
@@ -226,10 +230,13 @@
 				</div>
 			</footer>
 			<!-- End of Footer -->
+
 		</div>
 		<!-- End of Content Wrapper -->
+
 	</div>
 	<!-- End of Page Wrapper -->
+
 	<!-- Scroll to Top Button-->
 	<a class="scroll-to-top rounded" href="#page-top"> <i
 		class="fas fa-angle-up"></i>
@@ -244,7 +251,7 @@
 					<h5 class="modal-title" id="exampleModalLabel">¿Estás seguro?</h5>
 					<button class="close" type="button" data-dismiss="modal"
 						aria-label="Close">
-						<span aria-hidden="true">×</span>
+						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
 				<div class="modal-body">Da clic en cerrar sesión para salir.</div>
@@ -257,43 +264,6 @@
 		</div>
 	</div>
 
-	<!-- Add user Modal -->
-	<div class="modal fade" id="addAccountModal" tabindex="-1"
-		role="dialog" aria-labelledby="addAccountModal" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Agregar cuenta
-						a la lista</h5>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<form class="user" action="SavedAccounts" method="post">
-					<div class="modal-body">
-						<div class="form-group">
-							<input type="text" class="form-control form-control-user"
-								id="idClientTxt" name="idClientTxt"
-								placeholder="Número de cliente">
-						</div>
-						<div class="form-group">
-							<input type="text" class="form-control form-control-user"
-								id="aliasTxt" name="aliasTxt" placeholder="Nombre (Alias)"
-								value="${alias}">
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary"
-							data-dismiss="modal">Cancelar</button>
-						<button type="submit" class="btn btn-primary">Guardar
-							cuenta</button>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-	
 	<!-- Make Withdrawal Modal -->
 	<div class="modal fade" id="withdrawalModal" tabindex="-1"
 		role="dialog" aria-labelledby="withdrawalModal" aria-hidden="true">
@@ -374,11 +344,13 @@
 				</div>
 				<form class="user" action="MakeTransfer" method="post">
 					<div class="modal-body">
-					<div class="form-group">
-							<select id="idReceiverTxt" name="idReceiverTxt" class="form-control ">
-							<option value="" selected="selected" disabled="disabled">Destinatario</option>
+						<div class="form-group">
+							<select id="idReceiverTxt" name="idReceiverTxt"
+								class="form-control ">
+								<option value="" selected="selected" disabled="disabled">Destinatario</option>
 								<c:forEach items="${client.savedAccounts}" var="account">
-									<option value="${account.idAccout}">${account.alias} - ${account.idAccout}</option>
+									<option value="${account.idAccout}">${account.alias}-
+										${account.idAccout}</option>
 								</c:forEach>
 							</select>
 						</div>
@@ -413,11 +385,12 @@
 	<script src="js/sb-admin-2.min.js"></script>
 
 	<!-- Page level plugins -->
-	<script src="vendor/chart.js/Chart.min.js"></script>
+	<script src="vendor/datatables/jquery.dataTables.min.js"></script>
+	<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
 	<!-- Page level custom scripts -->
-	<script src="js/demo/chart-area-demo.js"></script>
-	<script src="js/demo/chart-pie-demo.js"></script>
+	<script src="js/demo/datatables-demo.js"></script>
+
 </body>
 
 </html>

@@ -373,6 +373,79 @@
 		</div>
 	</div>
 
+	<!-- Make Top Up Modal -->
+	<div class="modal fade" id="topUpModal" tabindex="-1" role="dialog"
+		aria-labelledby="topUpModal" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Recargar saldo</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<form class="user" action="MakeTopUpBalance" method="post">
+					<div class="modal-body">
+						<div class="form-group">
+							<input type="text" class="form-control form-control-user"
+								id="amountTxt" name="amountTxt"
+								placeholder="Monto de la recarga">
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">Cancelar</button>
+						<button type="submit" class="btn btn-primary">Recargar</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!-- Transfer Modal -->
+	<div class="modal fade" id="transferModal" tabindex="-1" role="dialog"
+		aria-labelledby="transferModal" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Realizar
+						transferencia</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<form class="user" action="MakeTransfer" method="post">
+					<div class="modal-body">
+					<div class="form-group">
+							<select id="idReceiverTxt" name="idReceiverTxt" class="form-control ">
+							<option value="" selected="selected" disabled="disabled">Destinatario</option>
+								<c:forEach items="${client.savedAccounts}" var="account">
+									<option value="${account.idAccout}">${account.alias} - ${account.idAccout}</option>
+								</c:forEach>
+							</select>
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control form-control-user"
+								id="amountTxt" name="amountTxt"
+								placeholder="Monto de la transferencia">
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control form-control-user"
+								id="descTxt" name="descTxt" placeholder="Descripción (opcional)">
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">Cancelar</button>
+						<button type="submit" class="btn btn-primary">Tranferir</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
 	<!-- Bootstrap core JavaScript-->
 	<script src="vendor/jquery/jquery.min.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

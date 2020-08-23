@@ -2,10 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <c:set var="client" value="${requestScope['client']}"></c:set>
-<c:set var="user" value="${requestScope['user']}"></c:set>
-<c:set var="message" value="${requestScope['message']}"></c:set>
+<c:set var="typeMov" value="${requestScope['type']}"></c:set>
 <head>
 
 <meta charset="utf-8">
@@ -15,17 +14,21 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Client</title>
+<title>Transferencias</title>
 
-<!-- Custom fonts for this template-->
+<!-- Custom fonts for this template -->
 <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
 	type="text/css">
 <link
 	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
 	rel="stylesheet">
 
-<!-- Custom styles for this template-->
+<!-- Custom styles for this template -->
 <link href="css/sb-admin-2.css" rel="stylesheet">
+
+<!-- Custom styles for this page -->
+<link href="vendor/datatables/dataTables.bootstrap4.min.css"
+	rel="stylesheet">
 
 </head>
 
@@ -72,28 +75,27 @@
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">Movimientos</h6>
 						<a class="collapse-item" data-toggle="modal"
-							data-target="#withdrawalModal" href="">Retiro de
-							dinero</a> <a class="collapse-item" data-toggle="modal"
-							data-target="#transferModal" href="">Transferencia</a>
-						<a class="collapse-item" data-toggle="modal"
-							data-target="#topUpModal" href="">Recarga de
-							saldo</a>
+							data-target="#withdrawalModal" href="">Retiro de dinero</a> <a
+							class="collapse-item" data-toggle="modal"
+							data-target="#transferModal" href="">Transferencia</a> <a
+							class="collapse-item" data-toggle="modal"
+							data-target="#topUpModal" href="">Recarga de saldo</a>
 					</div>
 				</div></li>
 
 			<!-- Nav Item - Utilities Collapse Menu -->
-			<li class="nav-item"><a class="nav-link collapsed" href="#"
+			<li class="nav-item active"><a class="nav-link" href="#"
 				data-toggle="collapse" data-target="#collapseUtilities"
 				aria-expanded="true" aria-controls="collapseUtilities"> <i
 					class="fas fa-fw fa-wrench"></i> <span>Consultar movimientos</span>
 			</a>
-				<div id="collapseUtilities" class="collapse"
+				<div id="collapseUtilities" class="collapse show"
 					aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">Movimientos:</h6>
-						<a class="collapse-item" href="CheckWithdrawals">Retiros</a> <a
-							class="collapse-item" href="CheckTransfers">Transferencias</a> <a
-							class="collapse-item" href="CheckPayments">Pagos a cuenta</a> <a
+						<a class="collapse-item" href="CheckWithdrawals">Retiros</a>
+						<a class="collapse-item active" href="CheckTransfers">Transferencias</a>
+						<a class="collapse-item" href="CheckPayments">Pagos a cuenta</a> <a
 							class="collapse-item" href="CheckTopUpBalances">Recargas</a> <a
 							class="collapse-item" href="CheckMovements">Todos</a>
 					</div>
@@ -134,7 +136,7 @@
 						class="btn btn-link d-md-none rounded-circle mr-3">
 						<i class="fa fa-bars"></i>
 					</button>
-					<h1 class="h3 mb-0 text-gray-800">Editar perfil</h1>
+					<h1 class="h3 mb-0 text-gray-800">Transferencias</h1>
 					<!-- Topbar Navbar -->
 					<ul class="navbar-nav ml-auto">
 
@@ -150,9 +152,8 @@
 							<div
 								class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
 								aria-labelledby="userDropdown">
-								<a class="dropdown-item" href="Client"> <i
-									class="fas fa-tachometer-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-									Página principal
+								<a class="dropdown-item" href="Profile"> <i
+									class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile
 								</a>
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="#" data-toggle="modal"
@@ -169,207 +170,73 @@
 
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
-					<div class="row my-2">
-						<div class="col-lg-12 order-lg-2">
-							<div class="tab-content py-4">
-								<div class="tab-pane active" id="profile">
-									<p>* Secciones obligatorias: todos los campos de la sección
-										deberán ser llenados. El unico campo obligatorio de la sección
-										"usuario" es el nombre de usuario.</p>
-									<p style="color: red;">${message}</p>
-									<form action="EditProfile" method="post">
-										<div class="row">
-											<div class="col-lg-6">
-												<div class="card shadow mb-4">
-													<div class="card-header py-3">
-														<h6 class="m-0 font-weight-bold text-primary">Datos
-															personales y fotografía *</h6>
-													</div>
-													<div class="card-body">
-														<div class="col-sm-12 mb-3 mb-sm-0">
-															<input type="text" class="form-control " id="nameTxt"
-																name="nameTxt" placeholder="Nombre"
-																value="${client.name}">
-														</div>
-														<div class="col-sm-12 mb-3 mt-sm-3">
-															<input type="text" class="form-control " id="surnameTxt"
-																name="surnameTxt" placeholder="Primer apellido"
-																value="${client.surname}">
-														</div>
-														<div class="col-sm-12 mb-3 mt-sm-3">
-															<input type="text" class="form-control "
-																id="lastnameTxt	" name="lastnameTxt"
-																placeholder="Segundo apellido"
-																value="${client.lastname}">
-														</div>
-														<div class="col-sm-12 mb-3 mt-sm-0">
-															<input type="text" class="form-control " id="curpTxt"
-																name="curpTxt" placeholder="CURP" value="${client.curp}"
-																pattern="^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0\d|1[0-2])(?:[0-2]\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$">
-														</div>
-														<div class="col-sm-12 mb-3 mt-sm-0">
-															<input type="text" class="form-control "
-																id="birthdayDate" name="birthdayDate"
-																placeholder="Fecha de nacimiento"
-																onfocus="(this.type='date')" value="${client.birthday}">
-														</div>
-														<div class="col-sm-12 mb-3 mt-sm-0">
-															<select name=genderTxt id="genderTxt"
-																class="form-control form-control-select">
-																<option selected value="">Género</option>
-																<option value="Masculino">Masculino</option>
-																<option value="Femenino">Femenino</option>
-																<option value="Otro">Otro</option>
-															</select>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="col-lg-6">
-												<div class="row">
-													<div class="col-lg-12">
-														<div class="card shadow mb-4">
-															<div class="card-header py-3">
-																<h6 class="m-0 font-weight-bold text-primary">Contacto
-																	*</h6>
-															</div>
-															<div class="card-body">
-																<div class="col-sm-12 mb-3 mb-sm-0">
-																	<input type="email" class="form-control " id="emailTxt"
-																		name="emailTxt" placeholder="Correo Electrónico"
-																		value="${client.contact.email}">
-																</div>
-																<div class="col-sm-12 mb-3 mt-sm-3">
-																	<input type="tel" class="form-control " id="phoneTxt"
-																		name="phoneTxt" placeholder="Teléfono a 10 dígitos"
-																		value="${client.contact.phone}"
-																		pattern="^[2-9]{2}[0-9]{8}$">
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-												<div class="row">
-													<div class="col-lg-12">
-														<div class="card shadow mb-4">
-															<div class="card-header py-3">
-																<h6 class="m-0 font-weight-bold text-primary">Usuario</h6>
-															</div>
-															<div class="card-body">
-																<div class="col-sm-12 mb-3 mb-sm-0">
-																	<input type="text" class="form-control "
-																		id="usernameTxt" name="usernameTxt"
-																		placeholder="Nombre de usuaro"
-																		value="${user.username}">
-																</div>
-																<div class="col-sm-12 mb-3 mt-sm-3">
-																	<input type="password" class="form-control "
-																		id="newPasswordTxt" name="newPasswordTxt"
-																		placeholder="Contraseña Nueva">
-																</div>
-																<div class="col-sm-12 mb-3 mt-sm-3">
-																	<input type="password" class="form-control "
-																		id="repeatPasswordTxt" name="repeatPasswordTxt"
-																		placeholder="Repite tu contraseña nueva">
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-lg-12">
-												<div class="card shadow mb-4">
-													<div class="card-header py-3">
-														<h6 class="m-0 font-weight-bold text-primary">Dirección
-															*</h6>
-													</div>
-													<div class="card-body">
-														<div class="row">
-															<div class="col-lg-4">
-																<div class="col-sm-12 mb-3 mb-sm-0">
-																	<input type="text" class="form-control " id="streetTxt"
-																		name="streetTxt" placeholder="Calle"
-																		value="${client.direction.street}">
-																</div>
-																<div class="col-sm-12 mb-3 mt-sm-3">
-																	<input type="number" class="form-control "
-																		id="numberTxt" name="numberTxt" placeholder="Número"
-																		value="${client.direction.number}">
-																</div>
-															</div>
-															<div class="col-lg-4">
-																<div class="col-sm-12  mb-3 mb-sm-0">
-																	<input type="text" class="form-control " id="suburbTxt"
-																		name="suburbTxt" placeholder="Colonia o poblado"
-																		value="${client.direction.suburb}">
-																</div>
-																<div class="col-sm-12  mb-3 mt-sm-3">
-																	<select name="townhallTxt" id="townhallTxt"
-																		class="form-control">
-																		<option selected value="">Alcaldía o
-																			municipio</option>
-																		<option value="Benito Juárez">Benito Juárez</option>
-																		<option value="Iztacalco">Iztacalco</option>
-																		<option value="Miguel Hidalgo">Miguel Hidalgo</option>
-																	</select>
-																</div>
-															</div>
-															<div class="col-lg-4">
-																<div class="col-sm-12 mb-3 mb-sm-0">
-																	<select name="stateTxt" id="stateTxt"
-																		class="form-control">
-																		<option selected value="">Estado</option>
-																		<option value="Ciudad de México">Ciudad de
-																			México</option>
-																	</select>
-																</div>
-																<div class="col-sm-12 mb-3 mt-sm-3">
-																	<select name="countryTxt" id="countryTxt"
-																		class="form-control">
-																		<option selected value="">País</option>
-																		<option value="México">México</option>
-																	</select>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-4">
-												<a href="Profile"
-													class="btn btn-secondary btn-icon-split col-md-12"> <span
-													class="text">Cancelar</span>
-												</a>
-											</div>
-											<div class="col-md-4 mt-xs-3">
-												<button type="submit"
-													class="btn btn-success btn-icon-split  col-md-12">
-													<span class="text">Editar perfil</span>
-												</button>
-											</div>
-											<div class="col-md-4 mt-xs-3">
-												<a href="DeleteAccount"
-													class="btn btn-danger btn-icon-split col-md-12"><span
-													class="text">Eliminar cuenta</span> </a>
-											</div>
-										</div>
-									</form>
-								</div>
+
+
+
+					<!-- DataTales Example -->
+					<div class="card shadow mb-4">
+						<div class="card-header py-3">
+							<h6 class="m-0 font-weight-bold text-primary">Tabla de
+								transferencias de dinero a otras cuentas</h6>
+						</div>
+						<div class="card-body">
+							<div class="table-responsive">
+								<table class="table table-bordered" id="dataTable" width="100%"
+									cellspacing="0">
+									<thead>
+										<tr>
+											<th width="15%">Cantidad</th>
+											<th width="25%">Fecha</th>
+											<th width="15%">Tipo</th>
+											<th>Descripción</th>
+										</tr>
+									</thead>
+									<tfoot>
+										<tr>
+											<th>Cantidad</th>
+											<th>Fecha</th>
+											<th>Tipo</th>
+											<th>Descripción</th>
+										</tr>
+									</tfoot>
+									<tbody>
+										<c:forEach items="${client.movements}" var="mov">
+											<c:if test="${mov.type == \"Transferencia\"}">
+												<tr>
+													<td>$${mov.amount}</td>
+													<td>${mov.movDate}</td>
+													<td>${mov.type}</td>
+													<td>${mov.description}</td>
+												</tr>
+											</c:if>
+										</c:forEach>
+									</tbody>
+								</table>
 							</div>
 						</div>
 					</div>
+
 				</div>
 				<!-- /.container-fluid -->
 			</div>
 			<!-- End of Main Content -->
+
+			<!-- Footer -->
+			<footer class="sticky-footer bg-white">
+				<div class="container my-auto">
+					<div class="copyright text-center my-auto">
+						<span>Copyright &copy; Alberto Laguna 2020</span>
+					</div>
+				</div>
+			</footer>
+			<!-- End of Footer -->
+
 		</div>
 		<!-- End of Content Wrapper -->
+
 	</div>
 	<!-- End of Page Wrapper -->
+
 	<!-- Scroll to Top Button-->
 	<a class="scroll-to-top rounded" href="#page-top"> <i
 		class="fas fa-angle-up"></i>
@@ -384,7 +251,7 @@
 					<h5 class="modal-title" id="exampleModalLabel">¿Estás seguro?</h5>
 					<button class="close" type="button" data-dismiss="modal"
 						aria-label="Close">
-						<span aria-hidden="true">×</span>
+						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
 				<div class="modal-body">Da clic en cerrar sesión para salir.</div>
@@ -396,7 +263,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<!-- Make Withdrawal Modal -->
 	<div class="modal fade" id="withdrawalModal" tabindex="-1"
 		role="dialog" aria-labelledby="withdrawalModal" aria-hidden="true">
@@ -477,11 +344,13 @@
 				</div>
 				<form class="user" action="MakeTransfer" method="post">
 					<div class="modal-body">
-					<div class="form-group">
-							<select id="idReceiverTxt" name="idReceiverTxt" class="form-control ">
-							<option value="" selected="selected" disabled="disabled">Destinatario</option>
+						<div class="form-group">
+							<select id="idReceiverTxt" name="idReceiverTxt"
+								class="form-control ">
+								<option value="" selected="selected" disabled="disabled">Destinatario</option>
 								<c:forEach items="${client.savedAccounts}" var="account">
-									<option value="${account.idAccout}">${account.alias} - ${account.idAccout}</option>
+									<option value="${account.idAccout}">${account.alias}-
+										${account.idAccout}</option>
 								</c:forEach>
 							</select>
 						</div>
@@ -516,11 +385,12 @@
 	<script src="js/sb-admin-2.min.js"></script>
 
 	<!-- Page level plugins -->
-	<script src="vendor/chart.js/Chart.min.js"></script>
+	<script src="vendor/datatables/jquery.dataTables.min.js"></script>
+	<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
 	<!-- Page level custom scripts -->
-	<script src="js/demo/chart-area-demo.js"></script>
-	<script src="js/demo/chart-pie-demo.js"></script>
+	<script src="js/demo/datatables-demo.js"></script>
+
 </body>
 
 </html>
