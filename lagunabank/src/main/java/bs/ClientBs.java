@@ -1,11 +1,9 @@
 package bs;
 
 import java.math.BigDecimal;
-import java.util.Calendar;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
-
 import dao.ClientDao;
 import pojos.Account;
 import pojos.Client;
@@ -44,17 +42,8 @@ public class ClientBs {
 		String townhall = parameterMap.get("townhallTxt")[0];
 		String state = parameterMap.get("stateTxt")[0];
 		String country = parameterMap.get("countryTxt")[0];
-		Date birthday;
 		String[] dateParts = parameterMap.get("birthdayDate")[0].split("-");
-		try {
-			Calendar cal = Calendar.getInstance();
-			cal.set(Calendar.YEAR, Integer.parseInt(dateParts[0]));
-			cal.set(Calendar.MONTH, Integer.parseInt(dateParts[1]));
-			cal.set(Calendar.DAY_OF_MONTH, Integer.parseInt(dateParts[2]));
-			birthday = cal.getTime();
-		} catch (NumberFormatException e) {
-			birthday = null;
-		}
+		LocalDate birthday = LocalDate.of(Integer.parseInt(dateParts[0]), Integer.parseInt(dateParts[1]), Integer.parseInt(dateParts[2]));
 		List<Movement> movements = null;
 		BigDecimal balance = new BigDecimal(parameterMap.get("balanceTxt")[0]);
 		List<BigDecimal> historicalBalances = null;

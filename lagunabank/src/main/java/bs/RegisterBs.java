@@ -1,7 +1,6 @@
 package bs;
 
-import java.util.Calendar;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -58,16 +57,7 @@ public class RegisterBs {
 				parameterMap.get("suburbTxt")[0], parameterMap.get("townhallTxt")[0], parameterMap.get("stateTxt")[0],
 				parameterMap.get("countryTxt")[0]);
 		String[] dateParts = parameterMap.get("birthdayDate")[0].split("-");
-		Date birthday;
-		try {
-			Calendar cal = Calendar.getInstance();
-			cal.set(Calendar.YEAR, Integer.parseInt(dateParts[0]));
-			cal.set(Calendar.MONTH, Integer.parseInt(dateParts[1]));
-			cal.set(Calendar.DAY_OF_MONTH, Integer.parseInt(dateParts[2]));
-			birthday = cal.getTime();
-		} catch (NumberFormatException e) {
-			birthday = null;
-		}
+		LocalDate birthday = LocalDate.of(Integer.parseInt(dateParts[0]), Integer.parseInt(dateParts[1]), Integer.parseInt(dateParts[2]));
 		return new Person(parameterMap.get("nameTxt")[0], parameterMap.get("surnameTxt")[0],
 				parameterMap.get("lastnameTxt")[0], parameterMap.get("curpTxt")[0], contact, direction, birthday,
 				parameterMap.get("genderTxt")[0]);

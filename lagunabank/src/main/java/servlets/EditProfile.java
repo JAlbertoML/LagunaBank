@@ -69,7 +69,6 @@ public class EditProfile extends HttpServlet {
 			request.setAttribute("message", message);
 			requestDispatcher.forward(request, response);
 		}
-		
 	}
 
 }

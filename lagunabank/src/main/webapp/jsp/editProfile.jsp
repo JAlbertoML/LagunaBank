@@ -8,7 +8,7 @@
 <c:set var="message" value="${requestScope['message']}"></c:set>
 <head>
 
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -42,8 +42,13 @@
 			<!-- Sidebar - Brand -->
 			<a
 				class="sidebar-brand d-flex align-items-center justify-content-center"
-				href="Client"> <img alt="Laguna Bank" src="img/logo.png"
-				width="100%">
+				href="Client">
+				<div class="sidebar-brand-icon rotate-n-15">
+					<i class="fas fa-piggy-bank"></i>
+				</div>
+				<div class="sidebar-brand-text mx-3">
+					LagunaBank
+				</div>
 			</a>
 
 			<!-- Divider -->
@@ -208,15 +213,14 @@
 																pattern="^([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0\d|1[0-2])(?:[0-2]\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)$">
 														</div>
 														<div class="col-sm-12 mb-3 mt-sm-0">
-															<input type="text" class="form-control "
-																id="birthdayDate" name="birthdayDate"
-																placeholder="Fecha de nacimiento"
-																onfocus="(this.type='date')" value="${client.birthday}">
+															<input type="date" class="form-control "
+																id="birthdayDate" name="birthdayDate" 
+																placeholder="Fecha de nacimiento" value="${client.birthday}">
 														</div>
 														<div class="col-sm-12 mb-3 mt-sm-0">
 															<select name=genderTxt id="genderTxt"
 																class="form-control form-control-select">
-																<option selected value="">Género</option>
+																<option selected value="${client.gender}">${client.gender}</option>
 																<option value="Masculino">Masculino</option>
 																<option value="Femenino">Femenino</option>
 																<option value="Otro">Otro</option>
@@ -308,8 +312,7 @@
 																<div class="col-sm-12  mb-3 mt-sm-3">
 																	<select name="townhallTxt" id="townhallTxt"
 																		class="form-control">
-																		<option selected value="">Alcaldía o
-																			municipio</option>
+																		<option selected value="${client.direction.townhall}">${client.direction.townhall}</option>
 																		<option value="Benito Juárez">Benito Juárez</option>
 																		<option value="Iztacalco">Iztacalco</option>
 																		<option value="Miguel Hidalgo">Miguel Hidalgo</option>
@@ -320,7 +323,7 @@
 																<div class="col-sm-12 mb-3 mb-sm-0">
 																	<select name="stateTxt" id="stateTxt"
 																		class="form-control">
-																		<option selected value="">Estado</option>
+																		<option selected value="${client.direction.state}">${client.direction.state}</option>
 																		<option value="Ciudad de México">Ciudad de
 																			México</option>
 																	</select>
@@ -328,7 +331,7 @@
 																<div class="col-sm-12 mb-3 mt-sm-3">
 																	<select name="countryTxt" id="countryTxt"
 																		class="form-control">
-																		<option selected value="">País</option>
+																		<option selected value="${client.direction.country}">${client.direction.country}</option>
 																		<option value="México">México</option>
 																	</select>
 																</div>

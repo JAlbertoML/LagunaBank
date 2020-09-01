@@ -44,8 +44,13 @@
 			<!-- Sidebar - Brand -->
 			<a
 				class="sidebar-brand d-flex align-items-center justify-content-center"
-				href="Client"> <img alt="Laguna Bank" src="img/logo.png"
-				width="100%">
+				href="Client">
+				<div class="sidebar-brand-icon rotate-n-15">
+					<i class="fas fa-piggy-bank"></i>
+				</div>
+				<div class="sidebar-brand-text mx-3">
+					LagunaBank
+				</div>
 			</a>
 
 			<!-- Divider -->
@@ -292,7 +297,7 @@
 									</div>
 									<div class="mt-4 text-center small">
 										<span class="mr-2"> <i
-											class="fas fa-circle text-primary"></i> Gastos
+											class="fas fa-circle" style="color: #ed887e;"></i> Gastos
 										</span> <span class="mr-2"> <i
 											class="fas fa-circle text-success"></i> Ingresos
 										</span>
@@ -430,11 +435,13 @@
 				</div>
 				<form class="user" action="MakeTransfer" method="post">
 					<div class="modal-body">
-					<div class="form-group">
-							<select id="idReceiverTxt" name="idReceiverTxt" class="form-control ">
-							<option value="" selected="selected" disabled="disabled">Destinatario</option>
+						<div class="form-group">
+							<select id="idReceiverTxt" name="idReceiverTxt"
+								class="form-control ">
+								<option value="" selected="selected" disabled="disabled">Destinatario</option>
 								<c:forEach items="${client.savedAccounts}" var="account">
-									<option value="${account.idAccout}">${account.alias} - ${account.idAccout}</option>
+									<option value="${account.idAccout}">${account.alias}-
+										${account.idAccout}</option>
 								</c:forEach>
 							</select>
 						</div>

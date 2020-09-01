@@ -17,7 +17,7 @@
 <c:set var="alert" value="${requestScope['alert']}"></c:set>
 <head>
 
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -51,8 +51,13 @@
 			<!-- Sidebar - Brand -->
 			<a
 				class="sidebar-brand d-flex align-items-center justify-content-center"
-				href="Client"> <img alt="Laguna Bank" src="img/logo.png"
-				width="100%">
+				href="Client">
+				<div class="sidebar-brand-icon rotate-n-15">
+					<i class="fas fa-piggy-bank"></i>
+				</div>
+				<div class="sidebar-brand-text mx-3">
+					LagunaBank
+				</div>
 			</a>
 
 			<!-- Divider -->

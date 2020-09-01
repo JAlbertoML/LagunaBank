@@ -6,8 +6,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -48,7 +48,7 @@ public class ClientDao {
 				String townhall = result.getString("townhall");
 				String state = result.getString("state");
 				String country = result.getString("country");
-				Date birthday = result.getDate("birthday");
+				LocalDate birthday = result.getDate("birthday").toLocalDate();
 				String gender = result.getString("gender");
 				BigDecimal balance = result.getBigDecimal("balance");
 				List<Movement> movements = gson.fromJson(result.getString("movements"), movementListType);
@@ -108,7 +108,7 @@ public class ClientDao {
 				String townhall = result.getString("townhall");
 				String state = result.getString("state");
 				String country = result.getString("country");
-				Date birthday = result.getDate("birthday");
+				LocalDate birthday = result.getDate("birthday").toLocalDate();
 				String gender = result.getString("gender");
 				BigDecimal balance = result.getBigDecimal("balance");
 				List<Movement> movements = gson.fromJson(result.getString("movements"), movementListType);
@@ -168,7 +168,7 @@ public class ClientDao {
 				String townhall = result.getString("townhall");
 				String state = result.getString("state");
 				String country = result.getString("country");
-				Date birthday = result.getDate("birthday");
+				LocalDate birthday = result.getDate("birthday").toLocalDate();
 				String gender = result.getString("gender");
 				BigDecimal balance = result.getBigDecimal("balance");
 				List<Movement> movements = gson.fromJson(result.getString("movements"), movementListType);
@@ -228,7 +228,7 @@ public class ClientDao {
 				String townhall = result.getString("townhall");
 				String state = result.getString("state");
 				String country = result.getString("country");
-				Date birthday = result.getDate("birthday");
+				LocalDate birthday = result.getDate("birthday").toLocalDate();
 				String gender = result.getString("gender");
 				BigDecimal balance = result.getBigDecimal("balance");
 				List<Movement> movements = gson.fromJson(result.getString("movements"), movementListType);
@@ -279,7 +279,7 @@ public class ClientDao {
 			preparedStatement.setString(10, client.getDirection().getTownhall());
 			preparedStatement.setString(11, client.getDirection().getState());
 			preparedStatement.setString(12, client.getDirection().getCountry());
-			preparedStatement.setDate(13, new java.sql.Date(client.getBirthday().getTime()));
+			preparedStatement.setDate(13, java.sql.Date.valueOf(client.getBirthday()));
 			preparedStatement.setString(14, gson.toJson(client.getMovements()));
 			preparedStatement.setBigDecimal(15, client.getBalance());
 			preparedStatement.setString(16, gson.toJson(client.getHistoricalBalances()));
@@ -315,7 +315,7 @@ public class ClientDao {
 			preparedStatement.setString(10, client.getDirection().getTownhall());
 			preparedStatement.setString(11, client.getDirection().getState());
 			preparedStatement.setString(12, client.getDirection().getCountry());
-			preparedStatement.setDate(13, new java.sql.Date(client.getBirthday().getTime()));
+			preparedStatement.setDate(13, java.sql.Date.valueOf(client.getBirthday()));
 			preparedStatement.setString(14, client.getGender());
 			preparedStatement.setInt(15, idClient);
 			Integer result = preparedStatement.executeUpdate();

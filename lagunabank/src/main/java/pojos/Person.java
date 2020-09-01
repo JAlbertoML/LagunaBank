@@ -1,6 +1,6 @@
 package pojos;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Person {
 	public static final String MALE_GENDER = "Masculino";
@@ -13,11 +13,11 @@ public class Person {
 	private String curp;
 	private Contact contact;
 	private Direction direction;
-	private Date birthday;
+	private LocalDate birthday;
 	private String gender;
 	
 	public Person(String name, String surname, String lastname, String curp, Contact contact, Direction direction,
-			Date birthday, String gender) {
+			LocalDate birthday, String gender) {
 		super();
 		this.name = name;
 		this.surname = surname;
@@ -77,11 +77,11 @@ public class Person {
 		this.direction = direction;
 	}
 
-	public Date getBirthday() {
+	public LocalDate getBirthday() {
 		return birthday;
 	}
 
-	public void setBirthday(Date birthday) {
+	public void setBirthday(LocalDate birthday) {
 		this.birthday = birthday;
 	}
 

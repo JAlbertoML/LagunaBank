@@ -1,7 +1,7 @@
 package pojos;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 public class Client extends Person {
@@ -13,7 +13,7 @@ public class Client extends Person {
 	private String photo;
 	
 	public Client(String name, String surname, String lastname, String curp, Contact contact, Direction direction,
-			Date birthday, Integer idClient, BigDecimal balance, List<BigDecimal> historicalBalances,
+			LocalDate birthday, Integer idClient, BigDecimal balance, List<BigDecimal> historicalBalances,
 			List<Movement> movements, List<Account> savedAccounts, String photo, String gender) {
 		super(name, surname, lastname, curp, contact, direction, birthday, gender);
 		this.idClient = idClient;
@@ -25,7 +25,7 @@ public class Client extends Person {
 	}
 	
 	public Client(String name, String surname, String lastname, String curp, Contact contact, Direction direction,
-			Date birthday, BigDecimal balance, List<BigDecimal> historicalBalances,
+			LocalDate birthday, BigDecimal balance, List<BigDecimal> historicalBalances,
 			List<Movement> movements, List<Account> savedAccounts, String photo, String gender) {
 		super(name, surname, lastname, curp, contact, direction, birthday, gender);
 		this.balance = balance;
@@ -36,7 +36,7 @@ public class Client extends Person {
 	}
 	
 	public Client(String name, String surname, String lastname, String curp, Contact contact, Direction direction,
-			Date birthday, String gender) {
+			LocalDate birthday, String gender) {
 		super(name, surname, lastname, curp, contact, direction, birthday, gender);
 	}
 
