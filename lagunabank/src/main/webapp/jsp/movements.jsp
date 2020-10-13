@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <c:set var="client" value="${requestScope['client']}"></c:set>
 <head>
 
-<meta charset="utf-8">
+<meta charset="ISO-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -192,7 +192,7 @@
 											<th width="15%">Cantidad</th>
 											<th width="25%">Fecha</th>
 											<th width="15%">Tipo</th>
-											<th>Descripci贸n</th>
+											<th>Descripci髇</th>
 										</tr>
 									</thead>
 									<tfoot>
@@ -200,7 +200,7 @@
 											<th>Cantidad</th>
 											<th>Fecha</th>
 											<th>Tipo</th>
-											<th>Descripci贸n</th>
+											<th>Descripci髇</th>
 										</tr>
 									</tfoot>
 									<tbody>
@@ -250,17 +250,17 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">驴Est谩s seguro?</h5>
+					<h5 class="modal-title" id="exampleModalLabel">縀st醩 seguro?</h5>
 					<button class="close" type="button" data-dismiss="modal"
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<div class="modal-body">Da clic en cerrar sesi贸n para salir.</div>
+				<div class="modal-body">Da clic en cerrar sesi髇 para salir.</div>
 				<div class="modal-footer">
 					<button class="btn btn-secondary" type="button"
 						data-dismiss="modal">Cancelar</button>
-					<a class="btn btn-primary" href="Logout">Cerrar sesi贸n</a>
+					<a class="btn btn-primary" href="Logout">Cerrar sesi髇</a>
 				</div>
 			</div>
 		</div>
@@ -287,7 +287,7 @@
 						<div class="form-group">
 							<input type="text" class="form-control form-control-user"
 								id="descTxt" name="descTxt"
-								placeholder="Descripci贸n del movimiento (opcional)">
+								placeholder="Descripci髇 del movimiento (opcional)">
 						</div>
 					</div>
 					<div class="modal-footer">
@@ -363,7 +363,7 @@
 						</div>
 						<div class="form-group">
 							<input type="text" class="form-control form-control-user"
-								id="descTxt" name="descTxt" placeholder="Descripci贸n (opcional)">
+								id="descTxt" name="descTxt" placeholder="Descripci髇 (opcional)">
 						</div>
 					</div>
 					<div class="modal-footer">

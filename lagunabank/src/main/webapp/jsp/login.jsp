@@ -1,18 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="es">
 <c:set var="message" value="${requestScope['message']}"></c:set>
 <head>
 
-  <meta charset="utf-8">
+  <meta charset="ISO-8859-1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Iniciar sesiÃ³n</title>
+  <title>Iniciar sesión</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -40,8 +40,8 @@
               <div class="col-lg-6">
                 <div class="p-5">
                   <div class="text-center">
-                    <h2 class="h2 text-gray-900 mb-4">Â¡Bienvenido a Laguna Bank!</h2>
-                    <h4 class="h4 text-gray-900 mb-4">Por favor, inicia sesiÃ³n</h4>
+                    <h2 class="h2 text-gray-900 mb-4">¡Bienvenido a Laguna Bank!</h2>
+                    <h4 class="h4 text-gray-900 mb-4">Por favor, inicia sesión</h4>
                   </div>
                   <p style="color: red;" class="text-center">${message}</p>
                   <form class="user" action="Login" method="post">
@@ -49,13 +49,13 @@
                       <input type="text" class="form-control form-control-user" id="usernameTxt" name="usernameTxt" placeholder="Tu nombre de usuario">
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control form-control-user" id="passwordTxt" name="passwordTxt" placeholder="Tu contraseÃ±a">
+                      <input type="password" class="form-control form-control-user" id="passwordTxt" name="passwordTxt" placeholder="Tu contraseña">
                     </div>
-                    <button class="btn btn-primary btn-user btn-block" type="submit">Iniciar sesiÃ³n</button>
+                    <button class="btn btn-primary btn-user btn-block" type="submit">Iniciar sesión</button>
                   </form>
                   <hr>
                   <div class="text-center">
-                    <a class="small" href="forgot-password.html">OlvidÃ© mi contraseÃ±a</a>
+                    <a class="small" href="forgot-password.html">Olvidé mi contraseña</a>
                   </div>
                   <div class="text-center">
                     <a class="small" href="Register">Quiero registrarme</a>

@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
 
-<meta charset="utf-8">
+<meta charset="ISO-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -42,11 +42,11 @@
 							<div class="col-lg-6">
 								<div class="p-5"><br><br><br><br><br><br>
 									<div class="text-center">
-										<h2 class="h2 text-gray-900 mb-4">Â¡Registro exitoso!</h2>
+										<h2 class="h2 text-gray-900 mb-4">¡Registro exitoso!</h2>
 									</div>
 									<hr>
 									<a class="btn btn-primary btn-user btn-block"
-										href="Login">Iniciar sesiÃ³n</a><br><br><br><br><br><br>
+										href="Login">Iniciar sesión</a><br><br><br><br><br><br>
 								</div>
 							</div>
 						</div>

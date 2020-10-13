@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="es">
@@ -8,9 +8,10 @@
 <c:set var="lastEntry" value="${requestScope['lastEntry']}"></c:set>
 <c:set var="message" value="${requestScope['messageErrorMov']}"></c:set>
 <c:set var="alert" value="${requestScope['alert']}"></c:set>
+<c:set var="recentMovs" value="${requestScope['recentMovs']}"></c:set>
 <head>
 
-<meta charset="utf-8">
+<meta charset="ISO-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -48,9 +49,7 @@
 				<div class="sidebar-brand-icon rotate-n-15">
 					<i class="fas fa-piggy-bank"></i>
 				</div>
-				<div class="sidebar-brand-text mx-3">
-					LagunaBank
-				</div>
+				<div class="sidebar-brand-text mx-3">LagunaBank</div>
 			</a>
 
 			<!-- Divider -->
@@ -179,7 +178,7 @@
 					<div class="row">
 
 						<!-- Earnings (Monthly) Card Example -->
-						<div class="col-xl-3 col-md-6 mb-4">
+						<div class="col-xl-4 col-md-4 mb-4">
 							<div class="card border-left-success shadow h-100 py-2">
 								<div class="card-body">
 									<div class="row no-gutters align-items-center">
@@ -199,14 +198,14 @@
 						</div>
 
 						<!-- Earnings (Monthly) Card Example -->
-						<div class="col-xl-3 col-md-6 mb-4">
+						<div class="col-xl-4 col-md-4 mb-4">
 							<div class="card border-left-primary shadow h-100 py-2">
 								<div class="card-body">
 									<div class="row no-gutters align-items-center">
 										<div class="col mr-2">
 											<div
 												class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-												脷ltimo gasto<br>(${lastExit.movDate})
+												趌timo gasto<br>(${lastExit.movDate})
 											</div>
 											<div class="h5 mb-0 font-weight-bold text-gray-800">$${lastExit.amount}</div>
 										</div>
@@ -219,14 +218,14 @@
 						</div>
 
 						<!-- Earnings (Monthly) Card Example -->
-						<div class="col-xl-3 col-md-6 mb-4">
+						<div class="col-xl-4 col-md-4 mb-4">
 							<div class="card border-left-info shadow h-100 py-2">
 								<div class="card-body">
 									<div class="row no-gutters align-items-center">
 										<div class="col mr-2">
 											<div
 												class="text-xs font-weight-bold text-info text-uppercase mb-1">
-												脷ltimo ingreso<br>(${lastEntry.movDate})
+												趌timo ingreso<br>(${lastEntry.movDate})
 											</div>
 											<div class="row no-gutters align-items-center">
 												<div class="col-auto">
@@ -264,30 +263,50 @@
 
 					<div class="row">
 						<!-- Area Chart -->
-						<div class="col-xl-8 col-lg-7">
+						<div class="col-xl-12 col-lg-12">
 							<div class="card shadow mb-4">
 								<!-- Card Header - Dropdown -->
 								<div
 									class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-									<h6 class="m-0 font-weight-bold text-primary">Resumen de
-										gastos e ingresos (mensual)</h6>
+									<h6 class="m-0 font-weight-bold text-primary">Movimientos
+										recientes</h6>
 								</div>
 								<!-- Card Body -->
 								<div class="card-body">
-									<div class="chart-area">
-										<canvas id="myAreaChart"></canvas>
+									<div class="table-responsive">
+										<table class="table table-bordered" id="dataTable"
+											width="100%" cellspacing="0">
+											<thead>
+												<tr>
+													<th width="15%">Cantidad</th>
+													<th width="25%">Fecha</th>
+													<th width="15%">Tipo</th>
+													<th>Descripci髇</th>
+												</tr>
+											</thead>
+											<tbody>
+												<c:forEach items="${recentMovs}" var="mov">
+													<tr>
+														<td>$${mov.amount}</td>
+														<td>${mov.movDate}</td>
+														<td>${mov.type}</td>
+														<td>${mov.description}</td>
+													</tr>
+												</c:forEach>
+											</tbody>
+										</table>
 									</div>
 								</div>
 							</div>
 						</div>
 
 						<!-- Pie Chart -->
-						<div class="col-xl-4 col-lg-5">
+						<%-- <div class="col-xl-4 col-lg-5">
 							<div class="card shadow mb-4">
 								<!-- Card Header - Dropdown -->
 								<div
 									class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-									<h6 class="m-0 font-weight-bold text-primary">Situaci贸n
+									<h6 class="m-0 font-weight-bold text-primary">Situaci髇
 										financiera</h6>
 								</div>
 								<!-- Card Body -->
@@ -304,7 +323,7 @@
 									</div>
 								</div>
 							</div>
-						</div>
+						</div> --%>
 					</div>
 				</div>
 				<!-- /.container-fluid -->
@@ -339,17 +358,17 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">驴Est谩s seguro?</h5>
+					<h5 class="modal-title" id="exampleModalLabel">縀st醩 seguro?</h5>
 					<button class="close" type="button" data-dismiss="modal"
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<div class="modal-body">Da clic en cerrar sesi贸n para salir.</div>
+				<div class="modal-body">Da clic en cerrar sesi髇 para salir.</div>
 				<div class="modal-footer">
 					<button class="btn btn-secondary" type="button"
 						data-dismiss="modal">Cancelar</button>
-					<a class="btn btn-primary" href="Logout">Cerrar sesi贸n</a>
+					<a class="btn btn-primary" href="Logout">Cerrar sesi髇</a>
 				</div>
 			</div>
 		</div>
@@ -376,7 +395,7 @@
 						<div class="form-group">
 							<input type="text" class="form-control form-control-user"
 								id="descTxt" name="descTxt"
-								placeholder="Descripci贸n del movimiento (opcional)">
+								placeholder="Descripci髇 del movimiento (opcional)">
 						</div>
 					</div>
 					<div class="modal-footer">
@@ -452,7 +471,7 @@
 						</div>
 						<div class="form-group">
 							<input type="text" class="form-control form-control-user"
-								id="descTxt" name="descTxt" placeholder="Descripci贸n (opcional)">
+								id="descTxt" name="descTxt" placeholder="Descripci髇 (opcional)">
 						</div>
 					</div>
 					<div class="modal-footer">

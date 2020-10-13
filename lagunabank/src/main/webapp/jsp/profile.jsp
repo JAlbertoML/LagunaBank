@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="es">
@@ -17,7 +17,7 @@
 <c:set var="alert" value="${requestScope['alert']}"></c:set>
 <head>
 
-<meta charset="UTF-8">
+<meta charset="ISO-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -166,7 +166,7 @@
 								aria-labelledby="userDropdown">
 								<a class="dropdown-item" href="Client"> <i
 									class="fas fa-tachometer-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-									PÃ¡gina principal
+									Página principal
 								</a>
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="#" data-toggle="modal"
@@ -199,7 +199,7 @@
 												<a class="btn btn-primary btn-user btn-block"
 													style="color: white;" data-toggle="modal"
 													data-target="#changePhoto">Cambiar foto</a> <a
-													href="DeleteAccount"
+													href="RemoveProfilePhoto"
 													class="btn btn-danger btn-icon-split col-md-12 mt-3 ${remove} "><span
 													class="text">Eliminar foto</span> </a>
 											</div>
@@ -211,7 +211,7 @@
 										${client.surname} ${client.lastname} (<b>${user.username}</b>)
 									</h5>
 									<p class="text-center">
-										<b>NÂ° de Cliente: </b>${client.idClient}</p>
+										<b>N° de Cliente: </b>${client.idClient}</p>
 									<div class="row">
 
 										<div class="col-lg-6">
@@ -238,16 +238,16 @@
 												</div>
 												<div class="card-body">
 													<p>
-														<b>Correo electrÃ³nico: </b>${client.contact.email}</p>
+														<b>Correo electrónico: </b>${client.contact.email}</p>
 													<p>
-														<b>TelÃ©fono: </b>${client.contact.phone	}</p>
+														<b>Teléfono: </b>${client.contact.phone	}</p>
 												</div>
 											</div>
 										</div>
 										<div class="col-lg-12">
 											<div class="card shadow mb-4">
 												<div class="card-header py-3">
-													<h6 class="m-0 font-weight-bold text-primary">DirecciÃ³n</h6>
+													<h6 class="m-0 font-weight-bold text-primary">Dirección</h6>
 												</div>
 												<div class="card-body">
 													<div class="row">
@@ -255,19 +255,19 @@
 															<p>
 																<b>Calle: </b>${client.direction.street}</p>
 															<p>
-																<b>NÃºmero: </b>${client.direction.number}</p>
+																<b>Número: </b>${client.direction.number}</p>
 														</div>
 														<div class="col-lg-4">
 															<p>
 																<b>Colonia o poblado: </b>${client.direction.suburb}</p>
 															<p>
-																<b>AlcaldÃ­a o municipio: </b>${client.direction.townhall}</p>
+																<b>Alcaldía o municipio: </b>${client.direction.townhall}</p>
 														</div>
 														<div class="col-lg-4">
 															<p>
 																<b>Estado: </b>${client.direction.state}</p>
 															<p>
-																<b>PaÃ­s: </b>${client.direction.country}</p>
+																<b>País: </b>${client.direction.country}</p>
 														</div>
 													</div>
 												</div>
@@ -299,17 +299,17 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Â¿EstÃ¡s seguro?</h5>
+					<h5 class="modal-title" id="exampleModalLabel">¿Estás seguro?</h5>
 					<button class="close" type="button" data-dismiss="modal"
 						aria-label="Close">
-						<span aria-hidden="true">Ã—</span>
+						<span aria-hidden="true">×</span>
 					</button>
 				</div>
-				<div class="modal-body">Da clic en cerrar sesiÃ³n para salir.</div>
+				<div class="modal-body">Da clic en cerrar sesión para salir.</div>
 				<div class="modal-footer">
 					<button class="btn btn-secondary" type="button"
 						data-dismiss="modal">Cancelar</button>
-					<a class="btn btn-primary" href="Logout">Cerrar sesiÃ³n</a>
+					<a class="btn btn-primary" href="Logout">Cerrar sesión</a>
 				</div>
 			</div>
 		</div>
@@ -364,7 +364,7 @@
 						<div class="form-group">
 							<input type="text" class="form-control form-control-user"
 								id="descTxt" name="descTxt"
-								placeholder="DescripciÃ³n del movimiento (opcional)">
+								placeholder="Descripción del movimiento (opcional)">
 						</div>
 					</div>
 					<div class="modal-footer">
@@ -438,7 +438,7 @@
 						</div>
 						<div class="form-group">
 							<input type="text" class="form-control form-control-user"
-								id="descTxt" name="descTxt" placeholder="DescripciÃ³n (opcional)">
+								id="descTxt" name="descTxt" placeholder="Descripción (opcional)">
 						</div>
 					</div>
 					<div class="modal-footer">

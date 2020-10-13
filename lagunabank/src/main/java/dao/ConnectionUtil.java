@@ -12,13 +12,13 @@ public class ConnectionUtil {
 		try {
 			comboPooledDataSource = new ComboPooledDataSource();
 			comboPooledDataSource.setDriverClass("org.postgresql.Driver");
-			comboPooledDataSource.setJdbcUrl("jdbc:postgresql://localhost:5432/bank");
+			comboPooledDataSource.setJdbcUrl("jdbc:postgresql://localhost:5432/lagunabank");
 			comboPooledDataSource.setUser("postgres");
 			comboPooledDataSource.setPassword("postgres");
 			
 			comboPooledDataSource.setAcquireIncrement(100);
 			comboPooledDataSource.setInitialPoolSize(5);
-			comboPooledDataSource.setMaxPoolSize(200);
+			comboPooledDataSource.setMaxPoolSize(100);
 			comboPooledDataSource.setMaxIdleTime(0);
 			comboPooledDataSource.setMinPoolSize(5);
 		} catch (PropertyVetoException e) {

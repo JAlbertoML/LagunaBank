@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,7 +7,7 @@
 <c:set var="person" value="${requestScope['person']}"></c:set>
 <head>
 
-<meta charset="utf-8">
+<meta charset="ISO-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -42,8 +42,8 @@
 							<div class="text-center">
 								<h1 class="h4 text-gray-900 mb-4">Crea tu cuenta</h1>
 							</div>
-							<p>* Secciones obligatorias: todos los campos de la secci√≥n
-								deber√°n ser llenados.</p>
+							<p>* Secciones obligatorias: todos los campos de la secciÛn
+								deber·n ser llenados.</p>
 							<p style="color: red" class="text-center">${message}</p>
 							<form class="user" action="Register" method="post">
 								<h3 class="h5 text-gray-900 mb-4">Datos personales *</h3>
@@ -75,7 +75,7 @@
 									<div class="col-sm-12 mb-3 mt-sm-0">
 										<select name=genderTxt id="genderTxt"
 											class="form-control form-control-select">
-											<option selected value="">G√©nero</option>
+											<option selected value="">GÈnero</option>
 											<option value="Masculino">Masculino</option>
 											<option value="Femenino">Femenino</option>
 											<option value="Otro">Otro</option>
@@ -83,7 +83,7 @@
 									</div>
 								</div>
 								<h3 class="h5 text-gray-900 mb-4">Define tu usuario y
-									contrase√±a *</h3>
+									contraseÒa *</h3>
 								<div class="form-group row">
 									<div class="col-sm-12 mb-3 mb-sm-0">
 										<input type="text" class="form-control " id="usernameTxt"
@@ -91,12 +91,12 @@
 									</div>
 									<div class="col-sm-6 mb-3 mt-sm-3">
 										<input type="password" class="form-control " id="passwordTxt"
-											name="passwordTxt" placeholder="Contrase√±a">
+											name="passwordTxt" placeholder="ContraseÒa">
 									</div>
 									<div class="col-sm-6 mb-3 mt-sm-3">
 										<input type="password" class="form-control "
 											id="repeatPasswordTxt" name="repeatPasswordTxt"
-											placeholder="Repite tu contrase√±a">
+											placeholder="Repite tu contraseÒa">
 									</div>
 								</div>
 								<h3 class="h5 text-gray-900 mb-4">Contacto *</h3>
@@ -104,16 +104,16 @@
 
 									<div class="col-sm-6 mb-3 mb-sm-0">
 										<input type="email" class="form-control " id="emailTxt"
-											name="emailTxt" placeholder="Correo Electr√≥nico"
+											name="emailTxt" placeholder="Correo ElectrÛnico"
 											value="${person.contact.email}">
 									</div>
 									<div class="col-sm-6 mb-3 mb-sm-0">
 										<input type="tel" class="form-control " id="phoneTxt"
-											name="phoneTxt" placeholder="Tel√©fono a 10 d√≠gitos"
+											name="phoneTxt" placeholder="TelÈfono a 10 dÌgitos"
 											value="${person.contact.phone}" pattern="^[2-9]{2}[0-9]{8}$">
 									</div>
 								</div>
-								<h3 class="h5 text-gray-900 mb-4">Direcci√≥n *</h3>
+								<h3 class="h5 text-gray-900 mb-4">DirecciÛn *</h3>
 								<div class="form-group row">
 									<div class="col-sm-6 mb-3 mb-sm-0">
 										<input type="text" class="form-control " id="streetTxt"
@@ -122,7 +122,7 @@
 									</div>
 									<div class="col-sm-6 mb-3 mb-sm-0">
 										<input type="number" class="form-control " id="numberTxt"
-											name="numberTxt" placeholder="N√∫mero"
+											name="numberTxt" placeholder="N˙mero"
 											value="${person.direction.number}">
 									</div>
 									<div class="col-sm-6  mb-3 mt-sm-3">
@@ -133,8 +133,8 @@
 									<div class="col-sm-6  mb-3 mt-sm-3">
 										<select name="townhallTxt" id="townhallTxt"
 											class="form-control">
-											<option selected value="">Alcald√≠a o municipio</option>
-											<option value="Benito Ju√°rez">Benito Ju√°rez</option>
+											<option selected value="">AlcaldÌa o municipio</option>
+											<option value="Benito Ju·rez">Benito Ju·rez</option>
 											<option value="Iztacalco">Iztacalco</option>
 											<option value="Miguel Hidalgo">Miguel Hidalgo</option>
 										</select>
@@ -142,13 +142,13 @@
 									<div class="col-sm-6 mb-3 mb-sm-0">
 										<select name="stateTxt" id="stateTxt" class="form-control">
 											<option selected value="">Estado</option>
-											<option value="Ciudad de M√©xico">Ciudad de M√©xico</option>
+											<option value="Ciudad de MÈxico">Ciudad de MÈxico</option>
 										</select>
 									</div>
 									<div class="col-sm-6 mb-3 mb-sm-0">
 										<select name="countryTxt" id="countryTxt" class="form-control">
-											<option selected value="">Pa√≠s</option>
-											<option value="M√©xico">M√©xico</option>
+											<option selected value="">PaÌs</option>
+											<option value="MÈxico">MÈxico</option>
 										</select>
 									</div>
 								</div>
@@ -164,8 +164,8 @@
 							</form>
 							<hr>
 							<div class="text-center">
-								<a class="small" href="forgot-password.html">Olvid√© mi
-									contrase√±a</a>
+								<a class="small" href="forgot-password.html">OlvidÈ mi
+									contraseÒa</a>
 							</div>
 							<div class="text-center">
 								<a class="small" href="Login">Ya tengo una cuenta</a>

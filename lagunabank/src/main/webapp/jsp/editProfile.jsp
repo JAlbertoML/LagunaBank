@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="es">
@@ -8,7 +8,7 @@
 <c:set var="message" value="${requestScope['message']}"></c:set>
 <head>
 
-<meta charset="UTF-8">
+<meta charset="ISO-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -157,7 +157,7 @@
 								aria-labelledby="userDropdown">
 								<a class="dropdown-item" href="Client"> <i
 									class="fas fa-tachometer-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-									PÃ¡gina principal
+									Página principal
 								</a>
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="#" data-toggle="modal"
@@ -178,8 +178,8 @@
 						<div class="col-lg-12 order-lg-2">
 							<div class="tab-content py-4">
 								<div class="tab-pane active" id="profile">
-									<p>* Secciones obligatorias: todos los campos de la secciÃ³n
-										deberÃ¡n ser llenados. El unico campo obligatorio de la secciÃ³n
+									<p>* Secciones obligatorias: todos los campos de la sección
+										deberán ser llenados. El unico campo obligatorio de la sección
 										"usuario" es el nombre de usuario.</p>
 									<p style="color: red;">${message}</p>
 									<form action="EditProfile" method="post">
@@ -188,7 +188,7 @@
 												<div class="card shadow mb-4">
 													<div class="card-header py-3">
 														<h6 class="m-0 font-weight-bold text-primary">Datos
-															personales y fotografÃ­a *</h6>
+															personales y fotografía *</h6>
 													</div>
 													<div class="card-body">
 														<div class="col-sm-12 mb-3 mb-sm-0">
@@ -240,12 +240,12 @@
 															<div class="card-body">
 																<div class="col-sm-12 mb-3 mb-sm-0">
 																	<input type="email" class="form-control " id="emailTxt"
-																		name="emailTxt" placeholder="Correo ElectrÃ³nico"
+																		name="emailTxt" placeholder="Correo Electrónico"
 																		value="${client.contact.email}">
 																</div>
 																<div class="col-sm-12 mb-3 mt-sm-3">
 																	<input type="tel" class="form-control " id="phoneTxt"
-																		name="phoneTxt" placeholder="TelÃ©fono a 10 dÃ­gitos"
+																		name="phoneTxt" placeholder="Teléfono a 10 dígitos"
 																		value="${client.contact.phone}"
 																		pattern="^[2-9]{2}[0-9]{8}$">
 																</div>
@@ -269,12 +269,12 @@
 																<div class="col-sm-12 mb-3 mt-sm-3">
 																	<input type="password" class="form-control "
 																		id="newPasswordTxt" name="newPasswordTxt"
-																		placeholder="ContraseÃ±a Nueva">
+																		placeholder="Contraseña Nueva">
 																</div>
 																<div class="col-sm-12 mb-3 mt-sm-3">
 																	<input type="password" class="form-control "
 																		id="repeatPasswordTxt" name="repeatPasswordTxt"
-																		placeholder="Repite tu contraseÃ±a nueva">
+																		placeholder="Repite tu contraseña nueva">
 																</div>
 															</div>
 														</div>
@@ -286,7 +286,7 @@
 											<div class="col-lg-12">
 												<div class="card shadow mb-4">
 													<div class="card-header py-3">
-														<h6 class="m-0 font-weight-bold text-primary">DirecciÃ³n
+														<h6 class="m-0 font-weight-bold text-primary">Dirección
 															*</h6>
 													</div>
 													<div class="card-body">
@@ -299,7 +299,7 @@
 																</div>
 																<div class="col-sm-12 mb-3 mt-sm-3">
 																	<input type="number" class="form-control "
-																		id="numberTxt" name="numberTxt" placeholder="NÃºmero"
+																		id="numberTxt" name="numberTxt" placeholder="Número"
 																		value="${client.direction.number}">
 																</div>
 															</div>
@@ -313,7 +313,7 @@
 																	<select name="townhallTxt" id="townhallTxt"
 																		class="form-control">
 																		<option selected value="${client.direction.townhall}">${client.direction.townhall}</option>
-																		<option value="Benito JuÃ¡rez">Benito JuÃ¡rez</option>
+																		<option value="Benito Juárez">Benito Juárez</option>
 																		<option value="Iztacalco">Iztacalco</option>
 																		<option value="Miguel Hidalgo">Miguel Hidalgo</option>
 																	</select>
@@ -324,15 +324,15 @@
 																	<select name="stateTxt" id="stateTxt"
 																		class="form-control">
 																		<option selected value="${client.direction.state}">${client.direction.state}</option>
-																		<option value="Ciudad de MÃ©xico">Ciudad de
-																			MÃ©xico</option>
+																		<option value="Ciudad de México">Ciudad de
+																			México</option>
 																	</select>
 																</div>
 																<div class="col-sm-12 mb-3 mt-sm-3">
 																	<select name="countryTxt" id="countryTxt"
 																		class="form-control">
 																		<option selected value="${client.direction.country}">${client.direction.country}</option>
-																		<option value="MÃ©xico">MÃ©xico</option>
+																		<option value="México">México</option>
 																	</select>
 																</div>
 															</div>
@@ -384,17 +384,17 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Â¿EstÃ¡s seguro?</h5>
+					<h5 class="modal-title" id="exampleModalLabel">¿Estás seguro?</h5>
 					<button class="close" type="button" data-dismiss="modal"
 						aria-label="Close">
-						<span aria-hidden="true">Ã—</span>
+						<span aria-hidden="true">×</span>
 					</button>
 				</div>
-				<div class="modal-body">Da clic en cerrar sesiÃ³n para salir.</div>
+				<div class="modal-body">Da clic en cerrar sesión para salir.</div>
 				<div class="modal-footer">
 					<button class="btn btn-secondary" type="button"
 						data-dismiss="modal">Cancelar</button>
-					<a class="btn btn-primary" href="Logout">Cerrar sesiÃ³n</a>
+					<a class="btn btn-primary" href="Logout">Cerrar sesión</a>
 				</div>
 			</div>
 		</div>
@@ -421,7 +421,7 @@
 						<div class="form-group">
 							<input type="text" class="form-control form-control-user"
 								id="descTxt" name="descTxt"
-								placeholder="DescripciÃ³n del movimiento (opcional)">
+								placeholder="Descripción del movimiento (opcional)">
 						</div>
 					</div>
 					<div class="modal-footer">
@@ -495,7 +495,7 @@
 						</div>
 						<div class="form-group">
 							<input type="text" class="form-control form-control-user"
-								id="descTxt" name="descTxt" placeholder="DescripciÃ³n (opcional)">
+								id="descTxt" name="descTxt" placeholder="Descripción (opcional)">
 						</div>
 					</div>
 					<div class="modal-footer">

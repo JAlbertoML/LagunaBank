@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -25,6 +26,9 @@ public class Client extends HttpServlet {
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("jsp/client.jsp");
 			pojos.Client client = (pojos.Client) httpSession.getAttribute("client");
 			request.setAttribute("client", client);
+			System.out.println(client.getPhoto());
+			ArrayList<Movement> recentMovs = new ArrayList<Movement>();
+			int i = 0;
 			try {
 				for(Movement mov : client.getMovements()) {
 					if(mov.getType().equals(Movement.MOV_TRANSFER) || mov.getType().equals(Movement.MOV_WITHDRAWAL)) {
@@ -38,6 +42,14 @@ public class Client extends HttpServlet {
 						break;
 					}
 				}
+				for(Movement mov : client.getMovements()) {
+					recentMovs.add(mov);
+					i++;
+					if(i==5) {
+						break;
+					}
+				}
+				request.setAttribute("recentMovs", recentMovs);
 			} catch (NullPointerException e) {
 				System.out.println("No hay nada");
 			}

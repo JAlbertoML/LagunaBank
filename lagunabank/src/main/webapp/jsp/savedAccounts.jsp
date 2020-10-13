@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -7,7 +7,7 @@
 <c:set var="client" value="${requestScope['client']}"></c:set>
 <c:set var="message" value="${requestScope['message']}"></c:set>
 <c:set var="alias" value="${requestScope['alias']}"></c:set>
-<meta charset="utf-8">
+<meta charset="ISO-8859-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -192,7 +192,7 @@
 									<thead>
 										<tr>
 											<th style="width: 5%;"></th>
-											<th>NÂ° Cliente</th>
+											<th>N° Cliente</th>
 											<th>Nombre (Alias)</th>
 										</tr>
 									</thead>
@@ -246,17 +246,17 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Â¿EstÃ¡s seguro?</h5>
+					<h5 class="modal-title" id="exampleModalLabel">¿Estás seguro?</h5>
 					<button class="close" type="button" data-dismiss="modal"
 						aria-label="Close">
-						<span aria-hidden="true">Ã—</span>
+						<span aria-hidden="true">×</span>
 					</button>
 				</div>
-				<div class="modal-body">Da clic en cerrar sesiÃ³n para salir.</div>
+				<div class="modal-body">Da clic en cerrar sesión para salir.</div>
 				<div class="modal-footer">
 					<button class="btn btn-secondary" type="button"
 						data-dismiss="modal">Cancelar</button>
-					<a class="btn btn-primary" href="Logout">Cerrar sesiÃ³n</a>
+					<a class="btn btn-primary" href="Logout">Cerrar sesión</a>
 				</div>
 			</div>
 		</div>
@@ -280,7 +280,7 @@
 						<div class="form-group">
 							<input type="text" class="form-control form-control-user"
 								id="idClientTxt" name="idClientTxt"
-								placeholder="NÃºmero de cliente">
+								placeholder="Número de cliente">
 						</div>
 						<div class="form-group">
 							<input type="text" class="form-control form-control-user"
@@ -320,7 +320,7 @@
 						<div class="form-group">
 							<input type="text" class="form-control form-control-user"
 								id="descTxt" name="descTxt"
-								placeholder="DescripciÃ³n del movimiento (opcional)">
+								placeholder="Descripción del movimiento (opcional)">
 						</div>
 					</div>
 					<div class="modal-footer">
@@ -394,7 +394,7 @@
 						</div>
 						<div class="form-group">
 							<input type="text" class="form-control form-control-user"
-								id="descTxt" name="descTxt" placeholder="DescripciÃ³n (opcional)">
+								id="descTxt" name="descTxt" placeholder="Descripción (opcional)">
 						</div>
 					</div>
 					<div class="modal-footer">

@@ -45,7 +45,12 @@ public class ClientBs {
 		String[] dateParts = parameterMap.get("birthdayDate")[0].split("-");
 		LocalDate birthday = LocalDate.of(Integer.parseInt(dateParts[0]), Integer.parseInt(dateParts[1]), Integer.parseInt(dateParts[2]));
 		List<Movement> movements = null;
-		BigDecimal balance = new BigDecimal(parameterMap.get("balanceTxt")[0]);
+		BigDecimal balance;
+		if(parameterMap.get("balanceTxt")[0] == "") {
+			balance = new BigDecimal("0");
+		} else {
+			balance = new BigDecimal(parameterMap.get("balanceTxt")[0]);
+		}
 		List<BigDecimal> historicalBalances = null;
 		String photo = "";
 		List<Account> savedAccounts = null;
@@ -73,5 +78,13 @@ public class ClientBs {
 	
 	public static Boolean editBalance(Integer idClient, BigDecimal balance) {
 		return ClientDao.editBalance(idClient, balance);
+	}
+	
+	public static Boolean changeProfilePhoto(String profilePhoto, Client client) {
+		return ClientDao.changeProfilePhoto(profilePhoto, client);
+	}
+	
+	public static Boolean removeProfilePhoto(Client client) {
+		return ClientDao.removeProfilePhoto(client);
 	}
 }

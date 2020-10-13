@@ -119,6 +119,13 @@
   	<servlet-name>CheckMovements</servlet-name>
   	<servlet-class>servlets.CheckMovements</servlet-class>
   </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>RemoveProfilePhoto</display-name>
+  	<servlet-name>RemoveProfilePhoto</servlet-name>
+  	<servlet-class>servlets.RemoveProfilePhoto</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>Login</servlet-name>
   	<url-pattern>/Login</url-pattern>
@@ -186,5 +193,9 @@
   <servlet-mapping>
   	<servlet-name>CheckMovements</servlet-name>
   	<url-pattern>/CheckMovements</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>RemoveProfilePhoto</servlet-name>
+  	<url-pattern>/RemoveProfilePhoto</url-pattern>
   </servlet-mapping>
 </web-app>

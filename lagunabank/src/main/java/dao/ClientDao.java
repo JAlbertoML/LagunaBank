@@ -387,4 +387,42 @@ public class ClientDao {
 		}
 		return correct;
 	}
+	
+	public static Boolean changeProfilePhoto(String profilePhoto, Client client) {
+		Boolean correct = false;
+		try {
+			Connection connection = ConnectionUtil.getConnection();
+			PreparedStatement preparedStatement = connection.prepareStatement(
+					"update client set photo = ? where idclient = ?");
+			preparedStatement.setString(1, profilePhoto);
+			preparedStatement.setInt(2, client.getIdClient());
+			Integer result = preparedStatement.executeUpdate();
+			if(result > 0) {
+				correct = true;
+			}
+		} catch (SQLException e) {
+			System.out.println("Error al modificar registro");
+			e.printStackTrace();
+		}
+		return correct;
+	}
+	
+	public static Boolean removeProfilePhoto(Client client) {
+		Boolean correct = false;
+		try {
+			Connection connection = ConnectionUtil.getConnection();
+			PreparedStatement preparedStatement = connection.prepareStatement(
+					"update client set photo = ? where idclient = ?");
+			preparedStatement.setString(1, "");
+			preparedStatement.setInt(2, client.getIdClient());
+			Integer result = preparedStatement.executeUpdate();
+			if(result > 0) {
+				correct = true;
+			}
+		} catch (SQLException e) {
+			System.out.println("Error al modificar registro");
+			e.printStackTrace();
+		}
+		return correct;
+	}
 }
